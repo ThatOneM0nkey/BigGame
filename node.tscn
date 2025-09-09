@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://bq1x37pvwdxy2"]
+
+[ext_resource type="Texture2D" uid="uid://bpwtm5i3dy72w" path="res://Screenshot 2025-09-09 142010.png" id="1_j2q8x"]
+[ext_resource type="PackedScene" uid="uid://byhyfx34pnot0" path="res://Scene/Magic_tower.tscn" id="2_112p8"]
+
+[sub_resource type="TileSet" id="TileSet_e2u21"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bss38"]
+size = Vector2(146, 133)
+
+[node name="Node" type="Node"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_j2q8x")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_e2u21")
+format = 2
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_112p8")]
+position = Vector2(-10, 3)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(135, 188)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_bss38")
