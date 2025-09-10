@@ -3,15 +3,14 @@
 [ext_resource type="Texture2D" uid="uid://be06y2e6nla2k" path="res://an-8-bit-retro-styled-pixel-art-illustration-of-a-red-cartoon-glowing-crystal-icon-free-png.webp" id="1_f12c7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2wffx"]
-size = Vector2(134, 121)
+size = Vector2(96, 87.5)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(975, 159)
-scale = Vector2(0.295918, 0.286735)
+position = Vector2(-1, -2)
+scale = Vector2(0.155102, 0.150289)
 texture = ExtResource("1_f12c7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(969, 181.5)
 shape = SubResource("RectangleShape2D_2wffx")
