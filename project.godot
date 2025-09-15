@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Game"
-run/main_scene="uid://cy1trj6gy78wj"
+run/main_scene="uid://cgywkqark7ac4"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -25,3 +25,4 @@ Global="*res://global.gd"
 2d_physics/layer_1="unit"
 2d_physics/layer_2="enemy"
 2d_physics/layer_3="lane"
+2d_physics/layer_4="bullet"
