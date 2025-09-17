@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://csrig67lfnfvt"]
+
+[ext_resource type="Script" uid="uid://biv2ut7u5mdbv" path="res://Enemy_scene/path_spawner.gd" id="1_j0wd8"]
+[ext_resource type="PackedScene" uid="uid://ce2cc64ttx2ef" path="res://Enemy_scene/enemy.tscn" id="3_aed8p"]
+
+[sub_resource type="Curve2D" id="Curve2D_w51g1"]
+bake_interval = 0.01
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1003, 144, 0, 0, 0, 0, 69, 144)
+}
+point_count = 2
+
+[sub_resource type="GDScript" id="GDScript_dx7oy"]
+script/source = "extends Path2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="GDScript" id="GDScript_cenly"]
+script/source = "extends PathFollow2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+ 
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[node name="PathSpawner" type="Node2D"]
+script = ExtResource("1_j0wd8")
+
+[node name="EnemyPath" type="Path2D" parent="."]
+position = Vector2(0, -35)
+scale = Vector2(1.04069, 1)
+curve = SubResource("Curve2D_w51g1")
+script = SubResource("GDScript_dx7oy")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="EnemyPath"]
+position = Vector2(1003, 144)
+rotation = 3.14159
+loop = false
+script = SubResource("GDScript_cenly")
+
+[node name="Enemy" parent="EnemyPath/PathFollow2D" instance=ExtResource("3_aed8p")]
+position = Vector2(0, -5)
+rotation = 3.14159
+speed = 100
