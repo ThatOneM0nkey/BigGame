@@ -14,6 +14,11 @@ config/name="Game"
 run/main_scene="uid://dgh3is5kmj83q"
 config/features=PackedStringArray("4.4", "Forward Plus")
 
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Projectile"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

@@ -42,7 +42,7 @@ func _process(delta: float) -> void:
 script = ExtResource("1_j0wd8")
 
 [node name="EnemyPath" type="Path2D" parent="."]
-position = Vector2(0, -35)
+position = Vector2(-1048, -152)
 scale = Vector2(1.04069, 1)
 curve = SubResource("Curve2D_w51g1")
 script = SubResource("GDScript_dx7oy")

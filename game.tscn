@@ -1,17 +1,50 @@
-[gd_scene load_steps=2 format=3 uid="uid://dgh3is5kmj83q"]
+[gd_scene load_steps=4 format=3 uid="uid://dgh3is5kmj83q"]
 
 [ext_resource type="Script" uid="uid://biv2ut7u5mdbv" path="res://Enemy_scene/path_spawner.gd" id="1_80nbo"]
+[ext_resource type="Texture2D" uid="uid://c0yg5qb02vhde" path="res://Enemy_scene/14-shading.png" id="2_e2o6t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_80nbo"]
+radius = 70.6045
 
 [node name="Game" type="Node2D"]
 
 [node name="PathSpawner" type="Node2D" parent="."]
+position = Vector2(1071, 65)
 script = ExtResource("1_80nbo")
 
 [node name="Timer" type="Timer" parent="PathSpawner"]
 wait_time = 2.0
 autostart = true
 
+[node name="PathSpawner2" type="Node2D" parent="."]
+position = Vector2(1064, 279)
+script = ExtResource("1_80nbo")
+
+[node name="Timer" type="Timer" parent="PathSpawner2"]
+wait_time = 2.0
+autostart = true
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(575, 332)
 
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(179, 85)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(2, 7)
+shape = SubResource("CircleShape2D_80nbo")
+
+[node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
+position = Vector2(179, 85)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D2"]
+position = Vector2(-3, 177)
+shape = SubResource("CircleShape2D_80nbo")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D2"]
+position = Vector2(-1.99998, -1)
+scale = Vector2(0.386667, 0.52)
+texture = ExtResource("2_e2o6t")
+
 [connection signal="timeout" from="PathSpawner/Timer" to="PathSpawner" method="_on_timer_timeout"]
+[connection signal="timeout" from="PathSpawner2/Timer" to="PathSpawner2" method="_on_timer_timeout"]

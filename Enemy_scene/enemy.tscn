@@ -1,13 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://ce2cc64ttx2ef"]
+[gd_scene load_steps=5 format=3 uid="uid://ce2cc64ttx2ef"]
 
 [ext_resource type="Texture2D" uid="uid://be06y2e6nla2k" path="res://Enemy_scene/an-8-bit-retro-styled-pixel-art-illustration-of-a-red-cartoon-glowing-crystal-icon-free-png.webp" id="1_f12c7"]
 [ext_resource type="Script" uid="uid://d4lrwwkuwd5rw" path="res://Enemy_scene/enemy.gd" id="1_gxb4w"]
+[ext_resource type="PackedScene" uid="uid://cjp24bx6a55rn" path="res://healthbar/healthbar.tscn" id="2_c0olu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yww8s"]
 radius = 33.0
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_gxb4w")
+speed = null
+
+[node name="Healthbar" parent="." instance=ExtResource("2_c0olu")]
+offset_left = -43.0
+offset_top = -70.0
+offset_right = 37.0
+offset_bottom = -63.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1, -8)
@@ -16,3 +24,4 @@ texture = ExtResource("1_f12c7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_yww8s")
+one_way_collision_margin = 0.0
