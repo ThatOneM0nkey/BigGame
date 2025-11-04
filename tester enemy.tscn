@@ -7,7 +7,7 @@
 script/source = "extends CharacterBody2D
 
 var health = 1
-const SPEED = 300.0
+const SPEED = 200.0
 const JUMP_VELOCITY = -400.0
 
 func _process(delta: float) -> void:
@@ -30,9 +30,20 @@ func _physics_process(delta: float) -> void:
 	
 
 
-func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
+
+	
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.name == \"player\":
+		
+		health -= 1
+		print(\"roar\")
+
+
+func _on_area_2d_mouse_entered() -> void:
+	print(\"BLM\")
 	health -= 1
-	print(\"roar\")
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5ylkk"]
@@ -57,4 +68,5 @@ script = ExtResource("2_vusmv")
 position = Vector2(2, -1)
 shape = SubResource("CircleShape2D_5ylkk")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
