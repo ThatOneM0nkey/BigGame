@@ -1,10 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://dgh3is5kmj83q"]
+[gd_scene load_steps=7 format=3 uid="uid://dgh3is5kmj83q"]
 
 [ext_resource type="Script" uid="uid://biv2ut7u5mdbv" path="res://Enemy_scene/path_spawner.gd" id="1_80nbo"]
 [ext_resource type="Texture2D" uid="uid://c0yg5qb02vhde" path="res://Enemy_scene/14-shading.png" id="2_e2o6t"]
+[ext_resource type="Script" uid="uid://t6xkoam6bo2v" path="res://character_body_2d.gd" id="2_fc0e3"]
+[ext_resource type="PackedScene" uid="uid://cjp24bx6a55rn" path="res://healthbar/healthbar.tscn" id="3_feb5d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_80nbo"]
 radius = 70.6045
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fc0e3"]
+radius = 33.0
 
 [node name="Game" type="Node2D"]
 
@@ -29,22 +34,31 @@ position = Vector2(575, 332)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 position = Vector2(179, 85)
+collision_layer = 12
+script = ExtResource("2_fc0e3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(2, 7)
 shape = SubResource("CircleShape2D_80nbo")
 
-[node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
-position = Vector2(179, 85)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D2"]
-position = Vector2(-3, 177)
-shape = SubResource("CircleShape2D_80nbo")
-
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D2"]
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
 position = Vector2(-1.99998, -1)
 scale = Vector2(0.386667, 0.52)
 texture = ExtResource("2_e2o6t")
+
+[node name="Healthbar" parent="CharacterBody2D" instance=ExtResource("3_feb5d")]
+offset_left = -89.0
+offset_top = 76.0
+offset_right = 151.0
+offset_bottom = 80.0
+
+[node name="Hitbox" type="Area2D" parent="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Hitbox"]
+shape = SubResource("CircleShape2D_fc0e3")
+one_way_collision_margin = 0.0
 
 [connection signal="timeout" from="PathSpawner/Timer" to="PathSpawner" method="_on_timer_timeout"]
 [connection signal="timeout" from="PathSpawner2/Timer" to="PathSpawner2" method="_on_timer_timeout"]

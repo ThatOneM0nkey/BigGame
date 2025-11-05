@@ -16,8 +16,11 @@ config/features=PackedStringArray("4.4", "Forward Plus")
 
 [layer_names]
 
-2d_physics/layer_1="Player"
-2d_physics/layer_2="Projectile"
+2d_physics/layer_1="Player Body"
+2d_physics/layer_2="Player Hitbox"
+2d_physics/layer_3="Enemy Body"
+2d_physics/layer_4="Enemy Hitbox"
+2d_physics/layer_6="Projectile"
 
 [rendering]
 
