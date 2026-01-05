@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlct26rkdfrfb"]
+
+[ext_resource type="PackedScene" uid="uid://s5a5p20ip4e2" path="res://bulletest.tscn" id="1_54ef7"]
+
+[sub_resource type="Curve2D" id="Curve2D_j34n1"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 334, 1)
+}
+point_count = 1
+
+[node name="BulletPathsSpawner" type="Node2D"]
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(143, 101)
+curve = SubResource("Curve2D_j34n1")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+
+[node name="Bullet" parent="Path2D/PathFollow2D" instance=ExtResource("1_54ef7")]
+position = Vector2(920, 266)
+
+[node name="Camera2D" type="Camera2D" parent="."]

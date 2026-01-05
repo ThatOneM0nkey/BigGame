@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cehvskhficm8s"]
+
+[ext_resource type="Texture2D" uid="uid://b14p1xbva8ni4" path="res://assets/Cannon.png" id="1_0om5p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ekbt"]
+size = Vector2(121.5, 86.5)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(288, 207)
+texture = ExtResource("1_0om5p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(285.25, 228.75)
+shape = SubResource("RectangleShape2D_1ekbt")

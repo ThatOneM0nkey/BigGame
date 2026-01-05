@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://swm2dqwsgvtr"]
+[gd_scene load_steps=6 format=3 uid="uid://swm2dqwsgvtr"]
 
 [ext_resource type="Script" uid="uid://f5yamxpxqsfs" path="res://map.gd" id="1_3vi7k"]
 [ext_resource type="Texture2D" uid="uid://bh3rjf0nthw70" path="res://assets/pixil-frame-0.png" id="1_gfjgm"]
 [ext_resource type="PackedScene" uid="uid://cgywkqark7ac4" path="res://tester enemy.tscn" id="3_3h1ab"]
+[ext_resource type="PackedScene" uid="uid://cehvskhficm8s" path="res://towewr.tscn" id="4_7if1s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3vi7k"]
 size = Vector2(1153, 129.813)
@@ -16,78 +17,85 @@ position = Vector2(641, 329)
 scale = Vector2(4, 4.05)
 texture = ExtResource("1_gfjgm")
 
-[node name="toplane" type="Area2D" parent="."]
-disable_mode = 1
-collision_layer = 4
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="toplane"]
-position = Vector2(577.5, 69.5)
-scale = Vector2(1, 0.875)
-shape = SubResource("RectangleShape2D_3vi7k")
-
-[node name="secondtoplane" type="Area2D" parent="."]
-disable_mode = 1
-collision_layer = 4
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="secondtoplane"]
-position = Vector2(577.5, 199.563)
-scale = Vector2(1, 0.875)
-shape = SubResource("RectangleShape2D_3vi7k")
-
-[node name="midlane" type="Area2D" parent="."]
-disable_mode = 1
-collision_layer = 4
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="midlane"]
-position = Vector2(577.5, 328.094)
-scale = Vector2(1, 0.875)
-shape = SubResource("RectangleShape2D_3vi7k")
-
-[node name="secondbotlane" type="Area2D" parent="."]
-disable_mode = 1
-collision_layer = 4
-collision_mask = 2
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="secondbotlane"]
-position = Vector2(577.5, 458.019)
-scale = Vector2(1, 0.875)
-shape = SubResource("RectangleShape2D_3vi7k")
-
-[node name="botlane" type="Area2D" parent="."]
-disable_mode = 1
-collision_layer = 4
-collision_mask = 2
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="botlane"]
-position = Vector2(577.5, 588)
-scale = Vector2(1, 0.875)
-shape = SubResource("RectangleShape2D_3vi7k")
-
 [node name="Camera2D" type="Camera2D" parent="."]
 z_index = -1
 position = Vector2(836, 327)
 scale = Vector2(1, -140.7)
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("3_3h1ab")]
+[node name="test enemy" type="Node2D" parent="."]
+
+[node name="CharacterBody2D" parent="test enemy" instance=ExtResource("3_3h1ab")]
 position = Vector2(1826, 63)
 
-[node name="CharacterBody2D2" parent="." instance=ExtResource("3_3h1ab")]
+[node name="CharacterBody2D2" parent="test enemy" instance=ExtResource("3_3h1ab")]
 position = Vector2(1675, 187)
 
-[node name="CharacterBody2D3" parent="." instance=ExtResource("3_3h1ab")]
+[node name="CharacterBody2D3" parent="test enemy" instance=ExtResource("3_3h1ab")]
 position = Vector2(1535, 319)
 
-[node name="CharacterBody2D4" parent="." instance=ExtResource("3_3h1ab")]
+[node name="CharacterBody2D4" parent="test enemy" instance=ExtResource("3_3h1ab")]
 position = Vector2(1325, 460)
 
-[node name="CharacterBody2D5" parent="." instance=ExtResource("3_3h1ab")]
+[node name="CharacterBody2D5" parent="test enemy" instance=ExtResource("3_3h1ab")]
 position = Vector2(1389, 584)
 
-[connection signal="area_entered" from="toplane" to="." method="_on_toplane_area_entered"]
-[connection signal="area_entered" from="secondtoplane" to="." method="_on_secondtoplane_area_entered"]
-[connection signal="area_entered" from="midlane" to="." method="_on_midlane_area_entered"]
-[connection signal="area_entered" from="secondbotlane" to="." method="_on_secondbotlane_area_entered"]
-[connection signal="area_entered" from="botlane" to="." method="_on_botlane_area_entered"]
+[node name="lanes" type="Node2D" parent="."]
+
+[node name="toplane" type="Area2D" parent="lanes"]
+disable_mode = 1
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lanes/toplane"]
+position = Vector2(577.5, 69.5)
+scale = Vector2(1, 0.875)
+shape = SubResource("RectangleShape2D_3vi7k")
+
+[node name="secondtoplane" type="Area2D" parent="lanes"]
+disable_mode = 1
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lanes/secondtoplane"]
+position = Vector2(577.5, 199.563)
+scale = Vector2(1, 0.875)
+shape = SubResource("RectangleShape2D_3vi7k")
+
+[node name="midlane" type="Area2D" parent="lanes"]
+disable_mode = 1
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lanes/midlane"]
+position = Vector2(577.5, 328.094)
+scale = Vector2(1, 0.875)
+shape = SubResource("RectangleShape2D_3vi7k")
+
+[node name="secondbotlane" type="Area2D" parent="lanes"]
+disable_mode = 1
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="lanes/secondbotlane"]
+position = Vector2(577.5, 458.019)
+scale = Vector2(1, 0.875)
+shape = SubResource("RectangleShape2D_3vi7k")
+
+[node name="botlane" type="Area2D" parent="lanes"]
+disable_mode = 1
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="lanes/botlane"]
+position = Vector2(577.5, 588)
+scale = Vector2(1, 0.875)
+shape = SubResource("RectangleShape2D_3vi7k")
+
+[node name="CharacterBody2D6" parent="." instance=ExtResource("4_7if1s")]
+position = Vector2(-223, -163)
+
+[connection signal="area_entered" from="lanes/toplane" to="." method="_on_toplane_area_entered"]
+[connection signal="area_entered" from="lanes/secondtoplane" to="." method="_on_secondtoplane_area_entered"]
+[connection signal="area_entered" from="lanes/midlane" to="." method="_on_midlane_area_entered"]
+[connection signal="area_entered" from="lanes/secondbotlane" to="." method="_on_secondbotlane_area_entered"]
+[connection signal="area_entered" from="lanes/botlane" to="." method="_on_botlane_area_entered"]
